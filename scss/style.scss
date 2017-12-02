@@ -1,0 +1,194 @@
+$text-color: #776e65;
+$bright-text-color: #f9f6f2;
+
+$grid-color: #bbada0;
+$tile-color: #eee4da;
+$tile-gold-color: #edc22e;
+$tile-gold-glow-color: lighten($tile-gold-color, 15%);
+$background: #faf8ef;
+
+* {
+  box-sizing: border-box;
+  // border: 1px solid red;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: $background;
+}
+
+.upper {
+  height: 30%;
+  position: relative;
+  div.heading {
+    color: $text-color;
+    font-size: 18px;
+    padding: 40px;
+    position: relative;
+    div.title {
+      font-size: 80px;
+      font-weight: bold;
+      margin: 0;
+      display: block;
+      float: left;
+    }
+    div.score {
+      float: right;
+      padding: 30px;
+      margin-right: 20px;
+      background: $text-color;
+      border-radius: 10px;
+      color: white;
+      position: relative;
+      // font-size: 25px;
+      &:after {
+        content: "Score";
+        position: absolute;
+        width: 100%;
+        top: 10px;
+        left: 12px;
+      }
+    }
+  }
+  button#undo {
+    background: $tile-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: $grid-color 10px solid;
+    // border-radius: 5px 0px 5px 5px;
+    border-radius: 50%;
+    font-size: 25px;
+    z-index: 1000;
+    i {
+      color: grey;
+    }
+  }
+}
+
+.lower {
+  height: 70%;
+  position: relative;
+}
+
+.outer {
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 5px;
+  background: $grid-color;
+}
+@media (min-width: 400px) {
+  .outer {
+    max-width: 100%;
+  }
+}
+@media (min-width: 401px) {
+  .outer {
+    max-width: 400px;
+  }
+}
+
+.inner {
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(238, 228, 218, 0.35);
+  color: $text-color;
+  font-size: 20px;
+  font-weight: bold;
+  // -webkit-transition: all 0.5s ease;
+  // -moz-transition: all 0.5s ease;
+  // -ms-transition: all 0.5s ease;
+  // transition: all 0.5s ease;
+  // animation: newTile 0.5s ease-out 0s;
+}
+
+.inner.newTile{
+//   // transform: scale(1.2);
+animation: newTile 0.5s ease-out 0s;
+}
+
+@keyframes newTile {
+  0%, 100% {transform: scale(1)}   
+  50% {transform: scale(1.2)}
+}
+
+// .inner span {
+//   position: absolute;
+//   top: 0;
+//   font-size: small;
+//   border: none;
+// }
+
+
+.inner[data-value="2048"] {
+  color: #f9f6f2;
+  background: #edc22e;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
+  font-size: 35px;
+}
+
+
+.inner[data-value="1024"] {
+  color: #f9f6f2;
+  background: #edc53f;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
+  font-size: 35px;
+}
+
+
+.inner[data-value="512"] {
+  color: #f9f6f2;
+  background: #edc850;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
+  font-size: 45px;
+}
+
+.inner[data-value="256"] {
+  color: #f9f6f2;
+  background: #edcc61;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  font-size: 45px;
+}
+.inner[data-value="2"] {
+  background: #eee4da;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+.inner[data-value="4"] {
+  background: #ede0c8;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+.inner[data-value="8"] {
+  color: #f9f6f2;
+  background: #f2b179;
+}
+.inner[data-value="16"] {
+  color: #f9f6f2;
+  background: #f59563;
+}
+.inner[data-value="32"] {
+  color: #f9f6f2;
+  background: #f67c5f;
+}
+.inner[data-value="64"] {
+  color: #f9f6f2;
+  background: #f65e3b;
+}
+.inner[data-value="128"] {
+  color: #f9f6f2;
+  background: #edcf72;
+  // box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
+  font-size: 45px;
+}
